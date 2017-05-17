@@ -67,7 +67,7 @@ def front_back(a, b):
         meio_b = int(tam_b/2)
     else:
         meio_b = int(tam_b/2)+1
-    retorno = a[0:meio_a] + b[0:meio_b] + a[meio_a:]+a[meio_b:]
+    retorno = a[0:meio_a] + b[0:meio_b] + a[meio_a:]+b[meio_b:]
     return retorno
 
 
