@@ -45,6 +45,38 @@ import sys
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
+import string
+
+def normaliza_texto(texto):
+    translator = str.maketrans('', '', string.punctuation)
+    texto = texto.translate(translator).lower()
+    return texto
+
+def leia(arquivo):
+    with open(arquivo, 'r') as f:
+        dados = f.read()
+    dados = normaliza_texto(dados)
+    dicionario = dict()
+    for palavra in dados.split():
+        try:
+            dicionario[palavra] +=1
+        except:
+            dicionario[palavra] =1
+    return dicionario
+
+
+def print_words(filename):
+    dicionario = leia(filename)
+    for chave in sorted(dicionario.keys()):
+        print(chave, dicionario[chave])
+    return
+
+def print_top(filename):
+    dicionario = leia(filename)
+    for i, chave in enumerate(sorted(dicionario, key=dicionario.__getitem__,reverse=True)):
+        print(i, chave, dicionario[chave])
+        if i==19:
+            break
 
 ###
 
